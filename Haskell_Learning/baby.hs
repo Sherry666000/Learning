@@ -95,4 +95,19 @@ zipWith' :: (a->b->c)->[a]->[b]->[c]
 zipWith' _ [] _ = []
 zipWith' _ _ [] = []
 zipWith' f (x:xs) (y:ys) = f x y :zipWith' f xs ys
-
+sum' :: (Num a) => [a] -> a
+sum' =foldl (+) 0
+map' :: (a->b) -> [a]->[b]
+map' f xs = foldr(\x acc->f x:acc) [] xs
+elem' :: (Eq a)=>a->[a]->Bool
+elem' y ys = foldr(\x acc->if x==y then True else acc) False ys
+maximum1' :: (Ord a)=>[a]->a
+maximum1' = foldl1 max
+reverse' :: [a]->[a]
+reverse' =foldl (flip(:)) []
+product' :: (Num a)=>[a]->a
+product' =foldl (*) 1
+filter' :: (a->Bool)->[a]->[a]
+filter' p=foldr (\x acc->if p x then x:acc else acc) []
+and' :: [Bool]->Bool
+and' xs = foldr (&&) True xs

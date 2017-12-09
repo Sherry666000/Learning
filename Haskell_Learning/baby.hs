@@ -61,11 +61,6 @@ cylinder r h =
    let sideArea = 2*pi*r*h
        topArea = pi*r^2
    in sideArea+topArea*2
-describeList :: [a]->String
-describeList ls ="The list is "++ what ls
-   where what [] = "empty"
-         what [x] = "single"
-	 what xs = "longer"
 maximum' :: (Ord a) => [a] -> a
 maximum' [] = error "maximum of empty list"
 maximum' [x] = x
@@ -111,3 +106,7 @@ filter' :: (a->Bool)->[a]->[a]
 filter' p=foldr (\x acc->if p x then x:acc else acc) []
 and' :: [Bool]->Bool
 and' xs = foldr (&&) True xs
+sqrtSums :: Int
+sqrtSums = length (takeWhile (<1000) (scanl1 (+) (map sqrt [1..]))) +1
+oddSquareSum :: Integer
+oddSquareSum = sum(takeWhile (<10000) (filter odd (map (^2)[1..])))
